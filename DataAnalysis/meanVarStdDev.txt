@@ -1,0 +1,57 @@
+import numpy as np
+
+def calculate(list):
+    def calc_mean(list):
+        shaped_list = np.reshape(list, (3, 3))
+        axis_y = np.mean(shaped_list, axis=0).tolist()
+        axis_x = np.mean(shaped_list, axis=1).tolist()
+        flattened = np.mean(list)
+        return [axis_y, axis_x, flattened]
+
+    def calc_variance(list):
+        shaped_list = np.reshape(list, (3, 3))
+        axis_y = np.var(shaped_list, axis=0).tolist()
+        axis_x = np.var(shaped_list, axis=1).tolist()
+        flattened = np.var(list)
+        return [axis_y, axis_x, flattened]
+
+    def calc_std(list):
+        shaped_list = np.reshape(list, (3, 3))
+        axis_y = np.std(shaped_list, axis=0).tolist()
+        axis_x = np.std(shaped_list, axis=1).tolist()
+        flattened = np.std(list)
+        return [axis_y, axis_x, flattened]
+
+    def calc_max(list):
+        shaped_list = np.reshape(list, (3, 3))
+        axis_y = np.max(shaped_list, axis=0).tolist()
+        axis_x = np.max(shaped_list, axis=1).tolist()
+        flattened = np.max(list)
+        return [axis_y, axis_x, flattened]
+
+    def calc_min(list):
+        shaped_list = np.reshape(list, (3, 3))
+        axis_y = np.min(shaped_list, axis=0).tolist()
+        axis_x = np.min(shaped_list, axis=1).tolist()
+        flattened = np.min(list)
+        return [axis_y, axis_x, flattened]
+
+    def calc_sum(list):
+        shaped_list = np.reshape(list, (3, 3))
+        axis_y = np.sum(shaped_list, axis=0).tolist()
+        axis_x = np.sum(shaped_list, axis=1).tolist()
+        flattened = np.sum(list)
+        return [axis_y, axis_x, flattened]
+
+    if len(list) != 9:
+        raise ValueError('List must contain nine numbers.')
+
+    calculations = {     
+        'mean': calc_mean(list),
+        'variance': calc_variance(list),
+        'standard deviation': calc_std(list),
+        'max': calc_max(list),
+        'min': calc_min(list),
+        'sum': calc_sum(list)
+    }
+    return calculations
